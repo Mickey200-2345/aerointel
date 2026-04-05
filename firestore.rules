@@ -1,0 +1,56 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    match /users/{userId} {
+      allow get, list: if isSignedIn();
+      allow create, update: if isOwner(userId);
+      allow delete: if false;
+    }
+
+    match /organizations/{organizationId} {
+      allow get, list, create, update: if isSignedIn();
+      allow delete: if false;
+    }
+
+    match /warehouses/{warehouseId} {
+      allow read, write: if isSignedIn();
+    }
+
+    match /shipments/{shipmentId} {
+      allow get, list, create, update: if isSignedIn();
+      allow delete: if false;
+    }
+
+    match /anomalyAlerts/{anomalyAlertId} {
+      allow get, list, update: if isSignedIn();
+      allow create, delete: if false;
+    }
+
+    match /conversations/{conversationId} {
+      allow get, list: if isSignedIn() && (request.auth.uid in resource.data.memberUserIds);
+      allow create: if isSignedIn() && (request.auth.uid in request.resource.data.memberUserIds);
+      allow update: if isSignedIn() && (request.auth.uid in resource.data.memberUserIds);
+      allow delete: if false;
+
+      match /messages/{messageId} {
+        allow get, list: if isSignedIn() && (request.auth.uid in get(/databases/$(database)/documents/conversations/$(conversationId)).data.memberUserIds);
+        allow create: if isSignedIn() && (request.auth.uid in get(/databases/$(database)/documents/conversations/$(conversationId)).data.memberUserIds);
+        allow update, delete: if false;
+      }
+    }
+
+    match /documents/{documentId} {
+      allow get, list, create, update: if isSignedIn();
+      allow delete: if false;
+    }
+  }
+}

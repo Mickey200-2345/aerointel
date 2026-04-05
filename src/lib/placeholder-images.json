@@ -1,0 +1,58 @@
+{
+  "placeholderImages": [
+    {
+      "id": "hero-cargo",
+      "description": "Cargo plane at sunset",
+      "imageUrl": "https://images.unsplash.com/photo-1571086291540-b137111fa1c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjYXJnbyUyMHBsYW5lfGVufDB8fHx8MTc3MTM5OTIyMXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cargo plane"
+    },
+    {
+      "id": "warehouse",
+      "description": "Automated logistics warehouse",
+      "imageUrl": "https://images.unsplash.com/photo-1627309366653-2dedc084cdf1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxsb2dpc3RpY3MlMjB3YXJlaG91c2V8ZW58MHx8fHwxNzcxNDY3MjE0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "logistics warehouse"
+    },
+    {
+      "id": "tracking-map",
+      "description": "Global logistics tracking map",
+      "imageUrl": "https://images.unsplash.com/photo-1723306744533-bed5a4f696dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8d29ybGQlMjBtYXB8ZW58MHx8fHwxNzcxNDUyMzgwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "world map"
+    },
+    {
+      "id": "user-avatar",
+      "description": "Professional user profile photo",
+      "imageUrl": "https://images.unsplash.com/photo-1629425733761-caae3b5f2e50?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxwcm9mZXNzaW9uYWwlMjBoZWFkc2hvdHxlbnwwfHx8fDE3NzE3ODI0NzB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "professional headshot"
+    },
+    {
+      "id": "bot-avatar",
+      "description": "AeroLink-7 Tactical AI Avatar",
+      "imageUrl": "https://images.unsplash.com/photo-1737644467636-6b0053476bb2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyb2JvdCUyMGZhY2V8ZW58MHx8fHwxNzcxNzc2Njc2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "robot face"
+    },
+    {
+      "id": "aircraft-3d-airbus",
+      "description": "Airbus A350 3D Diagram",
+      "imageUrl": "https://images.unsplash.com/photo-1645098807924-d93eb5cd55f4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxhaXJidXMlMjBwbGFuZXxlbnwwfHx8fDE3NzE4NTk0Mjh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "airbus plane"
+    },
+    {
+      "id": "aircraft-3d-boeing",
+      "description": "Boeing 777 3D Diagram",
+      "imageUrl": "https://images.unsplash.com/photo-1716166112462-9afeaaf3d4f6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxib2VpbmclMjBwbGFuZXxlbnwwfHx8fDE3NzE4NTk0Mjh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "boeing plane"
+    },
+    {
+      "id": "aircraft-3d-military",
+      "description": "C-17 Globemaster 3D Diagram",
+      "imageUrl": "https://images.unsplash.com/photo-1739544644700-f25d51b61684?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxtaWxpdGFyeSUyMHBsYW5lfGVufDB8fHx8MTc3MTg1OTQyOHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "military plane"
+    },
+    {
+      "id": "aircraft-3d-cargo",
+      "description": "Boeing 747-8F 3D Diagram",
+      "imageUrl": "https://images.unsplash.com/flagged/photo-1555685460-1d9cf532761b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y2FyZ28lMjBwbGFuZXxlbnwwfHx8fDE3NzE4MjYwMDl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cargo plane"
+    }
+  ]
+}

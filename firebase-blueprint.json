@@ -1,0 +1,282 @@
+
+{
+  "entities": {
+    "UserProfile": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "UserProfile",
+      "type": "object",
+      "description": "Represents a user profile within the AeroIntel platform, linked to an external authentication system.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the UserProfile entity."
+        },
+        "externalAuthId": {
+          "type": "string",
+          "description": "The unique identifier for this user as managed by the external authentication system."
+        },
+        "firstName": {
+          "type": "string",
+          "description": "The first name of the user."
+        },
+        "lastName": {
+          "type": "string",
+          "description": "The last name of the user."
+        },
+        "email": {
+          "type": "string",
+          "description": "The primary email address of the user.",
+          "format": "email"
+        },
+        "organizationId": {
+          "type": "string",
+          "description": "Reference to the Organization this user belongs to."
+        },
+        "role": {
+          "type": "string",
+          "description": "The role of the user within their organization."
+        },
+        "country": {
+          "type": "string",
+          "description": "The user's primary operating country."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "The timestamp when the user profile was created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "The timestamp when the user profile was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "externalAuthId",
+        "firstName",
+        "lastName",
+        "email",
+        "organizationId",
+        "role",
+        "createdAt"
+      ]
+    },
+    "Organization": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Organization",
+      "type": "object",
+      "description": "Represents an organization operating within the aviation cargo and logistics ecosystem.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Organization entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "The official name of the organization."
+        },
+        "type": {
+          "type": "string",
+          "description": "The type of organization (e.g., 'Airline', 'Freight Forwarder')."
+        },
+        "iataCode": {
+          "type": "string",
+          "description": "The 2-letter IATA code for airlines."
+        },
+        "fleetSize": {
+          "type": "number",
+          "description": "Total number of active aircraft."
+        },
+        "onTimePerformance": {
+          "type": "number",
+          "description": "The percentage of flights arriving on time."
+        },
+        "contactEmail": {
+          "type": "string",
+          "description": "The primary contact email.",
+          "format": "email"
+        },
+        "address": {
+          "type": "string",
+          "description": "The physical address."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Creation timestamp.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "type",
+        "contactEmail",
+        "createdAt"
+      ]
+    },
+    "Shipment": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Shipment",
+      "type": "object",
+      "description": "Represents an overarching cargo shipment with real-time telemetry.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Shipment entity."
+        },
+        "masterAirWaybillNumber": {
+          "type": "string",
+          "description": "The Master Air Waybill (MAWB) number."
+        },
+        "status": {
+          "type": "string",
+          "description": "Current status (e.g., 'In Transit', 'Delivered')."
+        },
+        "carrierCode": {
+          "type": "string",
+          "description": "The IATA carrier code."
+        },
+        "originIata": {
+          "type": "string",
+          "description": "3-letter IATA code for origin airport."
+        },
+        "destinationIata": {
+          "type": "string",
+          "description": "3-letter IATA code for destination airport."
+        },
+        "latitude": {
+          "type": "number",
+          "description": "Current real-time latitude."
+        },
+        "longitude": {
+          "type": "number",
+          "description": "Current real-time longitude."
+        },
+        "temperatureCelsius": {
+          "type": "number",
+          "description": "Current sensor-reported temperature."
+        },
+        "priority": {
+          "type": "string",
+          "description": "Priority level ('Critical', 'Standard')."
+        },
+        "totalWeightKg": {
+          "type": "number",
+          "description": "Total weight in kilograms."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Creation timestamp.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "status",
+        "createdAt"
+      ]
+    },
+    "Warehouse": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Warehouse",
+      "type": "object",
+      "description": "Represents an automated warehouse or distribution terminal.",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "location": { "type": "string" },
+        "capacityUtilization": { "type": "number" },
+        "inventoryCount": { "type": "number" },
+        "activeRobots": { "type": "number" },
+        "temperature": { "type": "number" },
+        "humidity": { "type": "number" },
+        "status": { "type": "string", "enum": ["Optimal", "Warning", "Critical"] }
+      },
+      "required": ["id", "name", "status"]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous",
+      "google.com"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/users/{userId}",
+        "definition": {
+          "entityName": "UserProfile",
+          "schema": {
+            "$ref": "#/backend/entities/UserProfile"
+          },
+          "description": "User profiles."
+        }
+      },
+      {
+        "path": "/organizations/{organizationId}",
+        "definition": {
+          "entityName": "Organization",
+          "schema": {
+            "$ref": "#/backend/entities/Organization"
+          },
+          "description": "Master organizations collection."
+        }
+      },
+      {
+        "path": "/shipments/{shipmentId}",
+        "definition": {
+          "entityName": "Shipment",
+          "schema": {
+            "$ref": "#/backend/entities/Shipment"
+          },
+          "description": "Shipment telemetry and metadata."
+        }
+      },
+      {
+        "path": "/warehouses/{warehouseId}",
+        "definition": {
+          "entityName": "Warehouse",
+          "schema": {
+            "$ref": "#/backend/entities/Warehouse"
+          },
+          "description": "Automated warehouse telemetry."
+        }
+      },
+      {
+        "path": "/anomalyAlerts/{anomalyId}",
+        "definition": {
+          "entityName": "Anomaly",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "description": { "type": "string" },
+              "severity": { "type": "string" },
+              "status": { "type": "string" },
+              "createdAt": { "type": "string", "format": "date-time" }
+            }
+          },
+          "description": "Operational anomalies."
+        }
+      },
+      {
+        "path": "/conversations/{convId}",
+        "definition": {
+          "entityName": "Conversation",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "name": { "type": "string" },
+              "memberUserIds": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          "description": "Messaging channels."
+        }
+      }
+    ]
+  }
+}
